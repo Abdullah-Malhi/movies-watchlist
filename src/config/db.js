@@ -24,3 +24,5 @@ const disconnectDB = async () => {
         console.error("Error disconnecting from database:", error);
     }
 };
+
+export { prisma, connectDB, disconnectDB };

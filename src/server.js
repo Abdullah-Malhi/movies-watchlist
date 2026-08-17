@@ -1,5 +1,9 @@
 import express from "express";
 import movieRoutes from "./Routes/movieRoutes.js";
+import {config} from "dotenv";
+
+config(); // Load environment variables from .env file
+
 
 const app = express();
 const PORT = 5001;

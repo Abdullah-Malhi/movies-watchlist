@@ -5,13 +5,19 @@ import {config} from "dotenv";
 import {connectDB, disconnectDB} from "./config/db.js";
 
 config(); // Load environment variables from .env file
+connectDB(); // Connect to the database
 
+// Body parser middleware to parse JSON requests
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const app = express();
 const PORT = 5001;
 
 app.use('/movies', movieRoutes);
 app.use('/auth', authRoutes);
+
+
 app.get('/', (req, res) => {
     res.json({ message: 'Hello, World!' });
 });

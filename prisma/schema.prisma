@@ -9,6 +9,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+
 }
 
 
@@ -54,6 +55,9 @@ model WatchlistItem{
   // Relationships
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)              
   movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+
+  @@unique([userId, movieId]) // Ensure a user can't have the same movie in their watchlist multiple times
 }
 
 enum WatchlistStatus {
